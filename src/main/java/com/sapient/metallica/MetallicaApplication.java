@@ -14,4 +14,5 @@ public class MetallicaApplication {
 		RefDataCreator creator = new RefDataCreator();
 		creator.createRefData();
 	}
+	
 }

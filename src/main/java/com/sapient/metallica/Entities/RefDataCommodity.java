@@ -1,13 +1,9 @@
 package com.sapient.metallica.Entities;
 
-<<<<<<< Upstream, based on origin/Lalit
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-=======
-
->>>>>>> d279346 Created MDCommodity entity, Notification package and class, added all delete and update for Trade Controller and commented out certain attributes from TradeEntity
 public class RefDataCommodity {
 
 	@Id

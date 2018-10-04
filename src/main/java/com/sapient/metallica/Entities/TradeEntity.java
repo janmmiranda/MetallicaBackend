@@ -28,12 +28,12 @@ public class TradeEntity {
 	@Column(name="trade_date")
 	Date date;
 	
-	@ManyToOne
-	RefDataCommodity commodity;
-	@ManyToOne
-	RefDataCounterParty counterParty;
-	@ManyToOne
-	RefDataLocation location;
+//	@ManyToOne
+//	RefDataCommodity commodity;
+//	@ManyToOne
+//	RefDataCounterParty counterParty;
+//	@ManyToOne
+//	RefDataLocation location;
 	
 	public Boolean getSide() {
 		return side;
@@ -65,24 +65,24 @@ public class TradeEntity {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public RefDataCommodity getCommodity() {
-		return commodity;
-	}
-	public void setCommodity(RefDataCommodity commodity) {
-		this.commodity = commodity;
-	}
-	public RefDataCounterParty getCounterParty() {
-		return counterParty;
-	}
-	public void setCounterParty(RefDataCounterParty counterParty) {
-		this.counterParty = counterParty;
-	}
-	public RefDataLocation getLocation() {
-		return location;
-	}
-	public void setLocation(RefDataLocation location) {
-		this.location = location;
-	}
+//	public RefDataCommodity getCommodity() {
+//		return commodity;
+//	}
+//	public void setCommodity(RefDataCommodity commodity) {
+//		this.commodity = commodity;
+//	}
+//	public RefDataCounterParty getCounterParty() {
+//		return counterParty;
+//	}
+//	public void setCounterParty(RefDataCounterParty counterParty) {
+//		this.counterParty = counterParty;
+//	}
+//	public RefDataLocation getLocation() {
+//		return location;
+//	}
+//	public void setLocation(RefDataLocation location) {
+//		this.location = location;
+//	}
 	public int getTradeId() {
 		return tradeId;
 	}
@@ -98,12 +98,13 @@ public class TradeEntity {
 		this.price = price;
 		this.date = date;
 	}
-	@Override
-	public String toString() {
-		return "TradeEntity [tradeId=" + tradeId + ", side=" + side + ", status=" + status + ", quantity=" + quantity
-				+ ", price=" + price + ", date=" + date + ", commodity=" + commodity + ", counterParty=" + counterParty
-				+ ", location=" + location + "]";
-	}
 	
+//	@Override
+//	public String toString() {
+//		return "TradeEntity [tradeId=" + tradeId + ", side=" + side + ", status=" + status + ", quantity=" + quantity
+//				+ ", price=" + price + ", date=" + date + ", commodity=" + commodity + ", counterParty=" + counterParty
+//				+ ", location=" + location + "]";
+//	}
+//	
 	
 }

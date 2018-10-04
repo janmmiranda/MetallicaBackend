@@ -9,4 +9,5 @@ public class MetallicaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MetallicaApplication.class, args);
 	}
+	
 }

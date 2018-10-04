@@ -2,6 +2,8 @@ package com.sapient.metallica.Repos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RefDataCounterPartyRepo extends JpaRepository<RefDataCounterPartyRepo, Integer>{
+import com.sapient.metallica.Entities.RefDataCounterParty;
+
+public interface RefDataCounterPartyRepo extends JpaRepository<RefDataCounterParty, Integer>{
 	
 }

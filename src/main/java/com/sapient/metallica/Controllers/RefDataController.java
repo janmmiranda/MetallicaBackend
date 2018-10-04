@@ -24,16 +24,16 @@ public class RefDataController {
 	@Autowired
 	RefDataLocation locationRepo;
 
-	public List<RefDataCommodity> fetchCommodities() {
-		
-		
-	}
-
-	public List<RefDataLocation> fetchLocations() {
-
-	}
-
-	public List<RefDataCounterParty> fetchCounterParties() {
-
-	}
+//	public List<RefDataCommodity> fetchCommodities() {
+//		
+//		
+//	}
+//
+//	public List<RefDataLocation> fetchLocations() {
+//
+//	}
+//
+//	public List<RefDataCounterParty> fetchCounterParties() {
+//
+//	}
 }

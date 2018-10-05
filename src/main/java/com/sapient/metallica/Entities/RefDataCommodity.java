@@ -3,23 +3,23 @@ package com.sapient.metallica.Entities;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name="commodity")
+@Entity
 public class RefDataCommodity {
 
 	@Id
-	String symbol;
+	private String symbol;
+	private String name;
 	
-	String name;
-
-	public RefDataCommodity() {
-		super();
-	}
-
 	public RefDataCommodity(String symbol, String name) {
 		super();
 		this.symbol = symbol;
 		this.name = name;
 	}
+
+	public RefDataCommodity() {
+		super();
+	}
+
 
 	public String getSymbol() {
 		return symbol;
@@ -36,12 +36,6 @@ public class RefDataCommodity {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	@Override
-	public String toString() {
-		return "RefDataCommodity [symbol=" + symbol + ", name=" + name + "]";
-	}
 	
 	
-
 }

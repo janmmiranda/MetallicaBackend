@@ -6,8 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-@Entity(name="location")//Entity is table name
-
+@Entity
 public class RefDataLocation {
 	
 	@Id
@@ -61,4 +60,27 @@ public class RefDataLocation {
 	
 	
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private int id;
+	private String cityName;
+	
+	public RefDataLocation(String cityName) {
+		super();
+		this.cityName = cityName;
+	}
+
+	public RefDataLocation() {
+		super();
+	}
+
+	public String getCityName() {
+		return cityName;
+	}
+
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
+	
+	
 }

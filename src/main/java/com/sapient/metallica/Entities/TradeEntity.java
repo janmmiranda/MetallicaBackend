@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
@@ -20,12 +22,21 @@ public class TradeEntity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int tradeId;
 	
+	/*
+	 * True  Buy
+	 * False Sell
+	 */
 	Boolean side;
+	/*
+	 * True  Completed
+	 * False Open
+	 */
 	Boolean status;
 	
 	int quantity;
 	float price;
 	@Column(name="trade_date")
+	@Temporal(TemporalType.DATE)
 	Date date;
 	
 	@ManyToOne

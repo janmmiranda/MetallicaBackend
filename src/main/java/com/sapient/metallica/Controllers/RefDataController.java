@@ -12,6 +12,7 @@ import com.sapient.metallica.Entities.MDCommodity;
 import com.sapient.metallica.Entities.RefDataCommodity;
 import com.sapient.metallica.Entities.RefDataCounterParty;
 import com.sapient.metallica.Entities.RefDataLocation;
+import com.sapient.metallica.Repos.MDcommodityRepo;
 import com.sapient.metallica.Repos.RefDataCommodityRepo;
 import com.sapient.metallica.Repos.RefDataCounterPartyRepo;
 import com.sapient.metallica.Repos.RefDataLocationRepo;
@@ -29,13 +30,13 @@ public class RefDataController {
 	@Autowired
 	RefDataLocationRepo locationRepo;
 
-//	@Autowired
-//	MDCommodityRepo mcd;
+	@Autowired
+	MDcommodityRepo mcr;
 	@RequestMapping(path = "/commodity", method = RequestMethod.GET)
 	public List<RefDataCommodity> fetchCommodities() {
 
 		List<RefDataCommodity> commodityList = commodityRepo.findAll();
-		//mcd.setSymbolName(commodityList);
+		mcr.setSymbolName(commodityList);
 		return commodityList;
 	}
 

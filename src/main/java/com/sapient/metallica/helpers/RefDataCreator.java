@@ -2,7 +2,10 @@ package com.sapient.metallica.helpers;
 
 import javax.annotation.PostConstruct;
 
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Component;
 
 import com.sapient.metallica.Entities.RefDataCommodity;
@@ -32,21 +35,26 @@ public class RefDataCreator {
 	public void createRefData() {
 		// TODO Auto-generated method stub
 		
+		
 		System.out.println("in create rd");
 		for(int i=1; i<=10; i++) {
 			
-			commodity = new RefDataCommodity();
-			commodity.setSymbol("Vb"+i);
-			commodity.setName("Vibranium"+i);
-			commodityRepo.save(commodity);
+			commodity=commodityRepo.findBySymbol("Vb"+i);
+			if(commodity==null) {
+				commodity = new RefDataCommodity();
+				commodity.setSymbol("Vb"+i);
+				commodity.setName("Vibranium"+i);
+				commodityRepo.save(commodity);
+				
+				counterParty = new RefDataCounterParty();
+				counterParty.setName("Tony Stark"+i);
+				counterPartyRepo.save(counterParty);
+				
+				location = new RefDataLocation();
+				location.setCityname("Kanpur"+i);
+				locationRepo.save(location);
+			}
 			
-			counterParty = new RefDataCounterParty();
-			counterParty.setName("Tony Stark"+i);
-			counterPartyRepo.save(counterParty);
-			
-			location = new RefDataLocation();
-			location.setCityname("Kanpur"+i);
-			locationRepo.save(location);
 		}
 		
 	}

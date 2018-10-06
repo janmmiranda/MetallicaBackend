@@ -17,18 +17,18 @@ public class MDCommodity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int mdId;
 	
-//	@ManyToOne
-//	RefDataCommodity commodity;
+	@ManyToOne
+	RefDataCommodity commodity;
 	
 	float price;
 
-//	public RefDataCommodity getCommodity() {
-//		return commodity;
-//	}
-//
-//	public void setCommodity(RefDataCommodity commodity) {
-//		this.commodity = commodity;
-//	}
+	public RefDataCommodity getCommodity() {
+		return commodity;
+	}
+
+	public void setCommodity(RefDataCommodity commodity) {
+		this.commodity = commodity;
+	}
 
 	public float getPrice() {
 		return price;
@@ -46,9 +46,9 @@ public class MDCommodity {
 		super();
 	}
 	
-//	public MDCommodity(RefDataCommodity commodity, float price) {
-//		this.commodity = commodity;
-//		this.price = price;
-//	}
+	public MDCommodity(RefDataCommodity commodity, float price) {
+		this.commodity = commodity;
+		this.price = price;
+	}
 	
 }

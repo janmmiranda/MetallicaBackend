@@ -4,9 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 @Entity
+@XmlRootElement
 public class RefDataCounterParty {
 	
 	@Id
@@ -57,31 +59,6 @@ public class RefDataCounterParty {
 	@Override
 	public String toString() {
 		return "RefDataCounterParty [id=" + id + ", name=" + name + "]";
-	}
-	
-	
-
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
-	private String name;
-
-	public RefDataCounterParty(String name) {
-		super();
-		this.name = name;
-	}
-
-	public RefDataCounterParty() {
-		super();
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
 	}
 	
 	

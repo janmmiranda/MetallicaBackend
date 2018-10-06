@@ -15,14 +15,14 @@ import com.sapient.metallica.Repos.RefDataCommodityRepo;
 @CrossOrigin("*")
 public class RefDataController {
 
-	@Autowired
-	RefDataCommodityRepo commodityRepo;
-
-	@Autowired
-	RefDataCounterParty counterPartyRepo;
-
-	@Autowired
-	RefDataLocation locationRepo;
+//	@Autowired
+//	RefDataCommodityRepo commodityRepo;
+//
+//	@Autowired
+//	RefDataCounterParty counterPartyRepo;
+//
+//	@Autowired
+//	RefDataLocation locationRepo;
 
 //	public List<RefDataCommodity> fetchCommodities() {
 //		

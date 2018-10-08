@@ -12,13 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.metallica.Entities.RefDataCommodity;
-import com.sapient.metallica.Entities.RefDataCounterParty;
-import com.sapient.metallica.Entities.RefDataLocation;
 import com.sapient.metallica.Entities.TradeEntity;
-import com.sapient.metallica.Repos.RefDataCommodityRepo;
-import com.sapient.metallica.Repos.RefDataCounterPartyRepo;
-import com.sapient.metallica.Repos.RefDataLocationRepo;
 import com.sapient.metallica.Repos.TradeRepo;
 import com.sapient.metallica.helpers.SearchCriteria;
 
@@ -29,12 +23,6 @@ public class TradeController {
 
 	@Autowired
 	TradeRepo tradeRepo;
-	@Autowired
-	RefDataCommodityRepo commRepo;
-	@Autowired
-	RefDataCounterPartyRepo cpRepo;
-	@Autowired
-	RefDataLocationRepo locRepo;
 	
 	/*
 	 * Test Method 
@@ -77,44 +65,25 @@ public class TradeController {
 	 * Method for adding a trade
 	 */
 	@RequestMapping(path="/add", method=RequestMethod.POST)
-	public ResponseEntity<String> addTrade(@RequestParam("rdcomId")int rdcId, 
-										   @RequestParam("rdcpId")int rdcpId,
-										   @RequestParam("rdlId")int rdlId,
-										   @RequestBody TradeEntity trade) {
-		RefDataCommodity rdComm = commRepo.getOne(rdcId);
-		RefDataCounterParty rdCP = cpRepo.getOne(rdcpId);
-		RefDataLocation rdLoc = locRepo.getOne(rdlId);
-		
-		if(rdComm != null || rdCP != null || rdLoc != null) {
-			trade.setCommodity(rdComm);
-			trade.setCounterParty(rdCP);
-			trade.setLocation(rdLoc);
-			tradeRepo.save(trade);
-			return new ResponseEntity<>("Successfully added new trade", HttpStatus.ACCEPTED);
-		}
-		return new ResponseEntity<>("Failed to add trade", HttpStatus.CONFLICT);
+	public ResponseEntity<String> addTrade(@RequestBody TradeEntity trade) {
+		tradeRepo.save(trade);
+		return new ResponseEntity<>("Successfully added new trade", HttpStatus.ACCEPTED);
 	}
-	
+
 	/*
 	 * Method for updating a trade
 	 */
 	@RequestMapping(path="/update", method=RequestMethod.PUT)
-	public ResponseEntity<String> updateTrade(@RequestParam("rdcomId")int rdcId, 
-										      @RequestParam("rdcpId")int rdcpId,
-										      @RequestParam("rdlId")int rdlId,
-										      @RequestBody TradeEntity utrade) {
-		RefDataCommodity rdComm = commRepo.getOne(rdcId);
-		RefDataCounterParty rdCP = cpRepo.getOne(rdcpId);
-		RefDataLocation rdLoc = locRepo.getOne(rdlId);
+	public ResponseEntity<String> updateTrade(@RequestBody TradeEntity utrade) {
 		
 		TradeEntity trade = tradeRepo.getOne(utrade.getTradeId());
 		trade.setSide(utrade.getSide());
 		trade.setStatus(utrade.getStatus());
 		trade.setQuantity(utrade.getQuantity());
 		trade.setPrice(utrade.getPrice());
-		trade.setCommodity(rdComm);
-		trade.setCounterParty(rdCP);
-		trade.setLocation(rdLoc);
+		trade.setCommodity(utrade.getCommodity());
+		trade.setCounterParty(utrade.getCounterParty());
+		trade.setLocation(utrade.getLocation());
 		tradeRepo.save(trade);
 		return new ResponseEntity<>("Successfully updated trade", HttpStatus.ACCEPTED);
 	}

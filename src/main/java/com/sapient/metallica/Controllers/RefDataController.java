@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sapient.metallica.Entities.MDCommodity;
 import com.sapient.metallica.Entities.RefDataCommodity;
 import com.sapient.metallica.Entities.RefDataCounterParty;
 import com.sapient.metallica.Entities.RefDataLocation;
@@ -18,6 +17,7 @@ import com.sapient.metallica.Repos.RefDataCounterPartyRepo;
 import com.sapient.metallica.Repos.RefDataLocationRepo;
 
 @RestController
+@RequestMapping("/refdata")
 @CrossOrigin("*")
 public class RefDataController {
 

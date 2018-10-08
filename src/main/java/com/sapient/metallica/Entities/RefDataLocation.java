@@ -57,30 +57,6 @@ public class RefDataLocation {
 	public String toString() {
 		return "RefDataLocation [id=" + id + ", cityname=" + cityname + "]";
 	}
-	
-	
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	private String cityName;
-	
-	public RefDataLocation(String cityName) {
-		super();
-		this.cityName = cityName;
-	}
-
-	public RefDataLocation() {
-		super();
-	}
-
-	public String getCityName() {
-		return cityName;
-	}
-
-	public void setCityName(String cityName) {
-		this.cityName = cityName;
-	}
-	
 	
 }

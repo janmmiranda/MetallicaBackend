@@ -57,6 +57,5 @@ public class RefDataLocation {
 	public String toString() {
 		return "RefDataLocation [id=" + id + ", cityname=" + cityname + "]";
 	}
-
 	
 }

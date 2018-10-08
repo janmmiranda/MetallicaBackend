@@ -1,6 +1,12 @@
 package com.sapient.metallica.helpers;
 
+import javax.annotation.PostConstruct;
+
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.provider.HibernateUtils;
+import org.springframework.stereotype.Component;
 
 import com.sapient.metallica.Entities.RefDataCommodity;
 import com.sapient.metallica.Entities.RefDataCounterParty;
@@ -9,25 +15,47 @@ import com.sapient.metallica.Repos.RefDataCommodityRepo;
 import com.sapient.metallica.Repos.RefDataCounterPartyRepo;
 import com.sapient.metallica.Repos.RefDataLocationRepo;
 
+@Component
 public class RefDataCreator {
 
+	RefDataCommodity commodity = new RefDataCommodity();
+	RefDataCounterParty counterParty = new RefDataCounterParty(); 
+	RefDataLocation location = new RefDataLocation();
+	
 	@Autowired
 	RefDataCommodityRepo commodityRepo;
 	
 	@Autowired
-	RefDataCounterPartyRepo cpRepo;
+	RefDataCounterPartyRepo counterPartyRepo;
 	
 	@Autowired
 	RefDataLocationRepo locationRepo;
 
+	@PostConstruct
 	public void createRefData() {
 		// TODO Auto-generated method stub
-		RefDataCommodity commodity = new RefDataCommodity("Vb", "Vibranium");
-		RefDataLocation location = new RefDataLocation("Kanpur");
-		RefDataCounterParty cp = new RefDataCounterParty("Tony Stark");
 		
-		commodityRepo.save(commodity);
-		cpRepo.save(cp);
-		locationRepo.save(location);
+		
+		System.out.println("in create rd");
+		for(int i=1; i<=10; i++) {
+			
+			commodity=commodityRepo.findBySymbol("Vb"+i);
+			if(commodity==null) {
+				commodity = new RefDataCommodity();
+				commodity.setSymbol("Vb"+i);
+				commodity.setName("Vibranium"+i);
+				commodityRepo.save(commodity);
+				
+				counterParty = new RefDataCounterParty();
+				counterParty.setName("Tony Stark"+i);
+				counterPartyRepo.save(counterParty);
+				
+				location = new RefDataLocation();
+				location.setCityname("Kanpur"+i);
+				locationRepo.save(location);
+			}
+			
+		}
+		
 	}
 }

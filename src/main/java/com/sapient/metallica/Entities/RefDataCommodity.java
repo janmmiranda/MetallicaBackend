@@ -1,12 +1,17 @@
 package com.sapient.metallica.Entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class RefDataCommodity {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	int id;
+	
 	private String symbol;
 	private String name;
 	
@@ -36,6 +41,9 @@ public class RefDataCommodity {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public int getId() {
+		return id;
+	}
 	
 }

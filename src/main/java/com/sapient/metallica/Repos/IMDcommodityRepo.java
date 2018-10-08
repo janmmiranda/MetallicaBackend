@@ -6,10 +6,4 @@ import com.sapient.metallica.Entities.MDCommodity;
 
 
 public interface IMDcommodityRepo extends JpaRepository<MDCommodity, Integer>{
-	
-
-	
- 
-	
-
 }

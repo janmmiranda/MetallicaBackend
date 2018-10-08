@@ -18,9 +18,9 @@ import com.sapient.metallica.Repos.RefDataLocationRepo;
 @Component
 public class RefDataCreator {
 
-	RefDataCommodity commodity;
-	RefDataCounterParty counterParty; 
-	RefDataLocation location;
+	RefDataCommodity commodity = new RefDataCommodity();
+	RefDataCounterParty counterParty = new RefDataCounterParty(); 
+	RefDataLocation location = new RefDataLocation();
 	
 	@Autowired
 	RefDataCommodityRepo commodityRepo;

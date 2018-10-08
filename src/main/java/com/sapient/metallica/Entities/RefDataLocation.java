@@ -15,43 +15,30 @@ public class RefDataLocation {
 	
 	String cityname;
 	
-	
 	public RefDataLocation() {
 		super();
 	}
-
-
 
 	public RefDataLocation(String cityname) {
 		super();
 		this.cityname = cityname;
 	}
 
-
-
 	public int getId() {
 		return id;
 	}
-
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
 	public String getCityname() {
 		return cityname;
 	}
 
-
-
 	public void setCityname(String cityname) {
 		this.cityname = cityname;
 	}
-
-
 
 	@Override
 	public String toString() {

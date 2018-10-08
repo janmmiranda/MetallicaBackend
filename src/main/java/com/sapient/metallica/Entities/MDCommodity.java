@@ -18,34 +18,21 @@ public class MDCommodity {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	int mdId;
 	
-	float price=getRandomNumber();// random price
+	float price;
 	String symbol;
 	String name;
-	
-//	@Autowired
-//	RefDataCommodityRepo jpaCMD;
-//	
-//	@RequestMapping(path="/allproduct", method=RequestMethod.GET)
-//	public List<RefDataCommodity> findAllCMD(){
-//		List<RefDataCommodity> List1 = jpaCMD.findAll();
-//				return List1;
-//	}
-	
-
-	
-//	@ManyToOne
-//	RefDataCommodity commodity;
 	
 	public MDCommodity() {
 		super();
 	}
 	
-	public MDCommodity(String symbol, String name) {
-		super();
-		this.symbol = symbol;
-		this.name = name;
+	public MDCommodity(float price, String symbol, String name) {
+	super();
+	this.price = price;
+	this.symbol = symbol;
+	this.name = name;
 	}
-	
+
 	public float getPrice() {
 		return price;
 	}
@@ -56,12 +43,6 @@ public class MDCommodity {
 
 	public int getMdId() {
 		return mdId;
-	}
-
-
-	public static float getRandomNumber(){
-	    float x = (float)(Math.random() * 5000 + 500);//price range between 500 to 5000
-	    return x;
 	}
 
 	public String getSymbol() {
@@ -86,22 +67,5 @@ public class MDCommodity {
 	public String toString() {
 		return "MDCommodity [mdId=" + mdId + ", price=" + price + ", symbol=" + symbol + ", name=" + name + "]";
 	}
-	
-	 
-//	public RefDataCommodity getCommodity() {
-//		return commodity;
-//	}
-//
-//	public void setCommodity(RefDataCommodity commodity) {
-//		this.commodity = commodity;
-//	}
-
-	
-	
-	
-//	public MDCommodity(RefDataCommodity commodity, float price) {
-//		this.commodity = commodity;
-//		this.price = price;
-//	}
 	
 }

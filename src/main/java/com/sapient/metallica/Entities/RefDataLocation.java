@@ -58,5 +58,4 @@ public class RefDataLocation {
 		return "RefDataLocation [id=" + id + ", cityname=" + cityname + "]";
 	}
 	
-	
 }

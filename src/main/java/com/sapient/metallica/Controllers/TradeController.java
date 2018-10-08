@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.metallica.Entities.TradeEntity;
 import com.sapient.metallica.Repos.TradeRepo;
+import com.sapient.metallica.helpers.RabbitMQSender;
 import com.sapient.metallica.helpers.SearchCriteria;
 
 @RestController
@@ -23,6 +24,9 @@ public class TradeController {
 
 	@Autowired
 	TradeRepo tradeRepo;
+	
+	@Autowired
+	RabbitMQSender rabbitMQSender;
 	
 	/*
 	 * Test Method 
@@ -67,6 +71,7 @@ public class TradeController {
 	@RequestMapping(path="/add", method=RequestMethod.POST)
 	public ResponseEntity<String> addTrade(@RequestBody TradeEntity trade) {
 		tradeRepo.save(trade);
+		rabbitMQSender.send(trade);
 		return new ResponseEntity<>("Successfully added new trade", HttpStatus.ACCEPTED);
 	}
 

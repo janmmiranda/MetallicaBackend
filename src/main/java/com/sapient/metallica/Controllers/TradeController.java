@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sapient.metallica.Entities.TradeEntity;
 import com.sapient.metallica.Repos.TradeRepo;
+import com.sapient.metallica.helpers.SearchCriteria;
 
 @RestController
-@RequestMapping("/metal")
+@RequestMapping("/trade")
 @CrossOrigin("*")
 public class TradeController {
 
@@ -34,7 +35,7 @@ public class TradeController {
 	/*
 	 * Method for fetching all trades
 	 */
-	@RequestMapping(path="/trade/find/all", method=RequestMethod.GET)
+	@RequestMapping(path="/find/all", method=RequestMethod.GET)
 	public List<TradeEntity> fetchAllTrades() {
 		List<TradeEntity> trades = tradeRepo.findAll();
 		return trades;
@@ -43,7 +44,7 @@ public class TradeController {
 	/*
 	 * Method for finding a single trade
 	 */
-	@RequestMapping(path="/trade/find", method=RequestMethod.GET)
+	@RequestMapping(path="/find", method=RequestMethod.GET)
 	public ResponseEntity<TradeEntity> findTrade(@RequestParam("id")int id) {
 		TradeEntity tTrade = tradeRepo.getOne(id);
 		if(tTrade != null) {
@@ -51,29 +52,45 @@ public class TradeController {
 		}
 		return new ResponseEntity<>(tTrade, HttpStatus.NO_CONTENT);
 	}
+	/*
+	 * Method for finding trades based on a set criteria
+	 */
+	@RequestMapping(path="/search", method=RequestMethod.POST)
+	public List<TradeEntity> searchTrades(@RequestBody SearchCriteria sc) {
+		List<TradeEntity> trades = tradeRepo.findAll(SearchCriteria.searchSpec(sc));
+		return trades;
+	}
 	
 	/*
 	 * Method for adding a trade
 	 */
-	@RequestMapping(path="/trade/add", method=RequestMethod.POST)
+	@RequestMapping(path="/add", method=RequestMethod.POST)
 	public ResponseEntity<String> addTrade(@RequestBody TradeEntity trade) {
 		tradeRepo.save(trade);
 		return new ResponseEntity<>("Successfully added new trade", HttpStatus.ACCEPTED);
 	}
-	
+
 	/*
 	 * Method for updating a trade
 	 */
-	@RequestMapping(path="trade/update", method=RequestMethod.PUT)
-	public ResponseEntity<String> updateTrade(@RequestParam("id")int id, @RequestBody TradeEntity utrade) {
-		TradeEntity trade = tradeRepo.getOne(id);
-		trade = utrade;
+	@RequestMapping(path="/update", method=RequestMethod.PUT)
+	public ResponseEntity<String> updateTrade(@RequestBody TradeEntity utrade) {
+		
+		TradeEntity trade = tradeRepo.getOne(utrade.getTradeId());
+		trade.setSide(utrade.getSide());
+		trade.setStatus(utrade.getStatus());
+		trade.setQuantity(utrade.getQuantity());
+		trade.setPrice(utrade.getPrice());
+		trade.setCommodity(utrade.getCommodity());
+		trade.setCounterParty(utrade.getCounterParty());
+		trade.setLocation(utrade.getLocation());
+		tradeRepo.save(trade);
 		return new ResponseEntity<>("Successfully updated trade", HttpStatus.ACCEPTED);
 	}
 	/*
 	 * Method for deleting a trade
 	 */
-	@RequestMapping(path="trade/delete", method=RequestMethod.DELETE)
+	@RequestMapping(path="/delete", method=RequestMethod.DELETE)
 	public ResponseEntity<String> deleteTrade(@RequestParam("id")int id) {
 		tradeRepo.deleteById(id);
 		return new ResponseEntity<>("Successfully deleted trade", HttpStatus.ACCEPTED);

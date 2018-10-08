@@ -2,10 +2,7 @@ package com.sapient.metallica.helpers;
 
 import javax.annotation.PostConstruct;
 
-import org.hibernate.SQLQuery;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.provider.HibernateUtils;
 import org.springframework.stereotype.Component;
 
 import com.sapient.metallica.Entities.RefDataCommodity;

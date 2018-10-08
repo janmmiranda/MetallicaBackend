@@ -1,19 +1,19 @@
-package com.sapient.metallica.Repos;
+package com.sapient.metallica.helpers;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import com.sapient.metallica.Entities.MDCommodity;
+import com.sapient.metallica.Repos.IMDcommodityRepo;
 
-
-@Repository
-public class MDcommodityRepo {
-	
-	@Autowired
-	RefDataCommodityRepo commodityrepo;
+@Component
+public class MarketDataCreator {
 	
 	@Autowired
 	IMDcommodityRepo jpaRepo;
 	
+	@PostConstruct
 	public void setData() {   //set static data in database
 		
 		MDCommodity commodity1 = new MDCommodity(getRandomNumber(),"FE", "Iron");

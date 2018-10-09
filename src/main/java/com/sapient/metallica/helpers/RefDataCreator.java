@@ -109,7 +109,6 @@ public class RefDataCreator {
 			location.setCityname("North Korea");
 			locationRepo.save(location);
 //			locationList.add(location);		
-//			locationRepo.saveAll(locationList);
 		}
 
 	}

@@ -82,6 +82,7 @@ public class SearchCriteria {
 		this.side = side;
 	}
 	
+	@SuppressWarnings("serial")
 	public static Specification<TradeEntity> searchSpec(SearchCriteria sc) {
 		return new Specification<TradeEntity>() {
 

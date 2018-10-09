@@ -8,7 +8,7 @@ public class Send {
 
 	private final static String QUEUE_NAME = "hello";
 	
-	public void Send() throws Exception {
+	public void SendTrade() throws Exception {
 		
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("localhost");

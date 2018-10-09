@@ -15,9 +15,9 @@ import com.sapient.metallica.Repos.RefDataLocationRepo;
 @Component
 public class RefDataCreator {
 
-	RefDataCommodity commodity;
-	RefDataCounterParty counterParty;
-	RefDataLocation location;
+	RefDataCommodity commodity, commodity1, commodity2, commodity3;
+	RefDataCounterParty counterParty, counterParty1, counterParty2, counterParty3;
+	RefDataLocation location, location1, location2, location3;
 
 	@Autowired
 	RefDataCommodityRepo commodityRepo;
@@ -28,68 +28,67 @@ public class RefDataCreator {
 	@Autowired
 	RefDataLocationRepo locationRepo;
 
-	List<RefDataCommodity> commodityList;
-	List<RefDataCounterParty> counterPartyList;
-	List<RefDataLocation> locationList;
-
 	@PostConstruct
 	public void createRefData() {
-		// TODO Auto-generated method stub
-
-		commodityList = new ArrayList<>();
-		counterPartyList = new ArrayList<>();
-		locationList = new ArrayList<>();
+		
 		System.out.println("in create rd");
 		commodity = commodityRepo.findBySymbol("Vb");
 		if (commodity == null) {
 			commodity = new RefDataCommodity();
 			commodity.setSymbol("Vb");
 			commodity.setName("Vibranium");
-			commodityList.add(commodity);
+			commodityRepo.save(commodity);
 			
-			commodity.setSymbol("Pd");
-			commodity.setName("Palladium");
-			commodityList.add(commodity);
+			commodity1 = new RefDataCommodity();
+			commodity1.setSymbol("Pd");
+			commodity1.setName("Palladium");
+			commodityRepo.save(commodity1);
 			
-			commodity.setSymbol("Ad");
-			commodity.setName("Adamantium");
-			commodityList.add(commodity);
+			commodity2 = new RefDataCommodity();
+			commodity2.setSymbol("Ad");
+			commodity2.setName("Adamantium");
+			commodityRepo.save(commodity2);
 			
-			commodity.setSymbol("U");
-			commodity.setName("Uranium-235");
-			commodityList.add(commodity);
-			
-			commodityRepo.saveAll(commodityList);
+			commodity3 = new RefDataCommodity();
+			commodity3.setSymbol("U");
+			commodity3.setName("Uranium-235");
+			commodityRepo.save(commodity3);
+
 
 			counterParty = new RefDataCounterParty();
 			counterParty.setName("Ultron");
-			counterPartyList.add(counterParty);
+			counterPartyRepo.save(counterParty);
 			
-			counterParty.setName("Tony Stark");
-			counterPartyList.add(counterParty);
+			counterParty1 = new RefDataCounterParty();
+			counterParty1.setName("Tony Stark");
+			counterPartyRepo.save(counterParty1);
 			
-			counterParty.setName("Logan");
-			counterPartyList.add(counterParty);
+			counterParty2 = new RefDataCounterParty();
+			counterParty2.setName("Logan");
+			counterPartyRepo.save(counterParty2);
 			
-			counterParty.setName("KIM-JONG-UN");
-			counterPartyList.add(counterParty);
+			counterParty3 = new RefDataCounterParty();
+			counterParty3.setName("KIM-JONG-UN");
+			counterPartyRepo.save(counterParty3);
 			
-			counterPartyRepo.saveAll(counterPartyList);
 			
 			location = new RefDataLocation();
 			location.setCityname("Wakanda");
-			locationList.add(location);
+			locationRepo.save(location);
 			
-			location.setCityname("Afghanistan");
-			locationList.add(location);
+			location1 = new RefDataLocation();
+			location1.setCityname("Afghanistan");
+			locationRepo.save(location1);
 			
-			location.setCityname("Canada");
-			locationList.add(location);
+			location2 = new RefDataLocation();
+			location2.setCityname("Canada");
+			locationRepo.save(location2);
 			
-			location.setCityname("USA");
-			locationList.add(location);
+			location3 = new RefDataLocation();
+			location3.setCityname("USA");
+			locationRepo.save(location3);
 			
-			locationRepo.saveAll(locationList);
+			//locationRepo.saveAll(locationList);
 		}
 
 	}

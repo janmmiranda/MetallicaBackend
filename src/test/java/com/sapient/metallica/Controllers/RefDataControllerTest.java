@@ -3,22 +3,33 @@ package com.sapient.metallica.Controllers;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import com.sapient.metallica.Entities.RefDataCommodity;
 import com.sapient.metallica.Entities.RefDataCounterParty;
 import com.sapient.metallica.Entities.RefDataLocation;
+import com.sapient.metallica.Repos.RefDataCommodityRepo;
+import com.sapient.metallica.Repos.RefDataCounterPartyRepo;
+import com.sapient.metallica.Repos.RefDataLocationRepo;
 
 public class RefDataControllerTest {
 
-	List<RefDataCommodity> commodityList;
-	List<RefDataCounterParty> counterPartyList;
-	List<RefDataLocation> locationList;
-	RefDataCommodity commodity;
-	RefDataCounterParty counterParty;
-	RefDataLocation location;
+	@Autowired
+	RefDataCommodityRepo commodityRepo;
+	@Autowired
+	RefDataCounterPartyRepo counterPartyRepo;
+	@Autowired
+	RefDataLocationRepo locationRepo;
+	static List<RefDataCommodity> commodityList;
+	static List<RefDataCounterParty> counterPartyList;
+	static List<RefDataLocation> locationList;
+	static RefDataCommodity commodity;
+	static RefDataCounterParty counterParty;
+	static RefDataLocation location;
 	
-	public List<RefDataCommodity> createCommodityList(){
+	@BeforeClass
+	public static List<RefDataCommodity> createCommodityList(){
 		commodityList = new ArrayList<>();
 		commodity = new RefDataCommodity();
 		commodity.setSymbol("Vb");
@@ -40,7 +51,8 @@ public class RefDataControllerTest {
 		
 	}
 	
-	public List<RefDataCounterParty> createCounterPartyList(){
+	@BeforeClass
+	public static List<RefDataCounterParty> createCounterPartyList(){
 		counterParty = new RefDataCounterParty();
 		counterParty.setName("Ultron");
 		counterPartyList.add(counterParty);
@@ -57,7 +69,8 @@ public class RefDataControllerTest {
 		
 	}
 	
-	public List<RefDataLocation> createLocationList(){
+	@BeforeClass
+	public static List<RefDataLocation> createLocationList(){
 		locationList = new ArrayList<>();
 		location = new RefDataLocation();
 		location.setCityname("Wakanda");
@@ -78,10 +91,9 @@ public class RefDataControllerTest {
 	@Test
 	public void test() {
 		
-		RefDataController refController = new RefDataController();
-		assertEquals(createCommodityList(), refController.fetchCommodities());
-		assertEquals(createCounterPartyList(), refController.fetchCounterParties());
-		assertEquals(createLocationList(), refController.fetchLocations());
+		assertEquals(createCommodityList(), commodityRepo.findAll());
+		assertEquals(createCounterPartyList(), counterPartyRepo.findAll());
+		assertEquals(createLocationList(), locationRepo.findAll());
 	}
 
 }

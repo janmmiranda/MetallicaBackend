@@ -5,6 +5,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.stereotype.Component;
+
+@Component
 @Entity
 public class RefDataCommodity {
 
@@ -44,6 +47,11 @@ public class RefDataCommodity {
 
 	public int getId() {
 		return id;
+	}
+
+	@Override
+	public String toString() {
+		return "RefDataCommodity [id=" + id + ", symbol=" + symbol + ", name=" + name + "]";
 	}
 	
 }
